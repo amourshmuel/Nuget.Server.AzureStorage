@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -113,8 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzurePackageService.cs" />
+    <Compile Include="AzureServerPackageRepository.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="AzureServerPackageRepository .cs" />
     <Compile Include="Bootstraper.cs" />
     <Compile Include="Domain.Services\AzurePackageSerializer.cs" />
     <Compile Include="Domain.Services\IAzurePackageSerializer.cs" />

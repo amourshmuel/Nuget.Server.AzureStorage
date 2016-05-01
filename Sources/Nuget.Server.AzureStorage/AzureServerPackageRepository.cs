@@ -1,6 +1,4 @@
-﻿using System.Data.SqlClient;
-
-namespace Nuget.Server.AzureStorage
+﻿namespace Nuget.Server.AzureStorage
 {
     using AutoMapper;
     using Microsoft.WindowsAzure;
@@ -41,7 +39,7 @@ namespace Nuget.Server.AzureStorage
             _storageAccount = CloudStorageAccount.Parse(azureConnectionString);
             _blobClient = _storageAccount.CreateCloudBlobClient();
         }
-        public AzureServerPackageRepository(IPackageLocator packageLocator, 
+        public AzureServerPackageRepository(IPackageLocator packageLocator,
                                             IAzurePackageSerializer packageSerializer,
                                             CloudStorageAccount storageAccount)
         {
@@ -59,7 +57,8 @@ namespace Nuget.Server.AzureStorage
         /// <returns></returns>
         public Package GetMetadataPackage(IPackage package)
         {
-            var derived = new DerivedPackageData() {
+            var derived = new DerivedPackageData()
+            {
                 //Created = ?
                 //FullPath = ?
                 IsAbsoluteLatestVersion = package.IsAbsoluteLatestVersion,
@@ -105,7 +104,7 @@ namespace Nuget.Server.AzureStorage
         public IQueryable<IPackage> Search(string searchTerm, IEnumerable<string> targetFrameworks, bool allowPrereleaseVersions)
         {
             var packages = GetPackages().ToList();
-            return 
+            return
                 GetPackages()
                 .Find(searchTerm)
                 .FilterByPrerelease(allowPrereleaseVersions)
@@ -151,8 +150,8 @@ namespace Nuget.Server.AzureStorage
             latest.Metadata.IsLatestVersion = true;
             latest.Metadata.IsAbsoluteLatestVersion = true;
 
-            foreach (var blobWithMetadata in blobsWithMetadata) 
-                _packageSerializer.SaveToMetadata(blobWithMetadata.Metadata,blobWithMetadata.Blob);
+            foreach (var blobWithMetadata in blobsWithMetadata)
+                _packageSerializer.SaveToMetadata(blobWithMetadata.Metadata, blobWithMetadata.Blob);
 
         }
 
