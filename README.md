@@ -1,7 +1,3 @@
-**this project is dead for now. I need to put some time into it.**
-
-**Please let me know if you want to joni and help**
-
 Nuget.Server.AzureStorage
 =========================
 # Getting started
